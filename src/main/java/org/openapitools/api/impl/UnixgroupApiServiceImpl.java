@@ -51,4 +51,9 @@ public class UnixgroupApiServiceImpl extends UnixgroupApiService {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
+
+    @Override
+    public Response unixgroupNameNameGet(String name, SecurityContext securityContext) throws NotFoundException {
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "namename...!")).build();
+    }
 }
