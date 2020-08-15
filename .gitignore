@@ -2,3 +2,4 @@
 *.idea*
 *target*
 .idea/compiler.xml
+*.iml*
