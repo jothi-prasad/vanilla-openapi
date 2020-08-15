@@ -4,7 +4,7 @@
   <artifactId>openapi-jaxrs-server</artifactId>
   <packaging>war</packaging>
   <name>openapi-jaxrs-server</name>
-  <version>1.0.6</version>
+  <version>1.0.0</version>
 
   <licenses>
     <license>
@@ -98,6 +98,84 @@
           </execution>
         </executions>
       </plugin>
+
+
+<!--      adding swagger ui dependencies.. including copy and replace lines in index.html-->
+
+      <plugin>
+        <groupId>com.googlecode.maven-download-plugin</groupId>
+        <artifactId>download-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+            <id>swagger-ui</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <skipCache>false</skipCache>
+              <url>https://github.com/swagger-api/swagger-ui/archive/master.tar.gz</url>
+              <unpack>true</unpack>
+              <outputDirectory>${project.build.directory}</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/${build.finalName}/docs</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/swagger-ui-master/dist</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.google.code.maven-replacer-plugin</groupId>
+        <artifactId>replacer</artifactId>
+        <version>1.5.3</version>
+        <executions>
+          <execution>
+            <id>replace-swagger-json-location</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>replace</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <file>${project.build.directory}/${build.finalName}/docs/index.html</file>
+          <replacements>
+            <replacement>
+              <token>https://petstore.swagger.io/v2/swagger.json</token>
+              <value>http://localhost:8080/v1/swagger.json</value>
+            </replacement>
+          </replacements>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.flywaydb</groupId>
+        <artifactId>flyway-maven-plugin</artifactId>
+        <version>5.2.4</version>
+        <configuration>
+          <baselineOnMigrate>true</baselineOnMigrate>
+        </configuration>
+      </plugin>
+<!--      end of copy-->
+
     </plugins>
   </build>
   <dependencies>

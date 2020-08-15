@@ -24,4 +24,6 @@ public abstract class UnixgroupApiService {
     public abstract Response unixgroupNameMemberMembernamePut(String name,String membername,SecurityContext securityContext) throws NotFoundException;
     public abstract Response unixgroupNamePut(String name,GroupStub groupStub,SecurityContext securityContext) throws NotFoundException;
     public abstract Response unixgroupPost(GroupStub groupStub,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response unixgroupNameNameGet(String name,SecurityContext securityContext) throws NotFoundException;
+
 }

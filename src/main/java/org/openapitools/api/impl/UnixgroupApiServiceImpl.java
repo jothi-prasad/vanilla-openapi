@@ -26,7 +26,10 @@ public class UnixgroupApiServiceImpl extends UnixgroupApiService {
     @Override
     public Response unixgroupNameGet(String name, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+        Group grp = new Group();
+        grp.setName("testgroup");
+
+        return Response.ok().entity(grp).build();
     }
     @Override
     public Response unixgroupNameMemberMembernameDelete(String name, String membername, SecurityContext securityContext) throws NotFoundException {
@@ -47,5 +50,10 @@ public class UnixgroupApiServiceImpl extends UnixgroupApiService {
     public Response unixgroupPost(GroupStub groupStub, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+
+    @Override
+    public Response unixgroupNameNameGet(String name, SecurityContext securityContext) throws NotFoundException {
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "namename...!")).build();
     }
 }
