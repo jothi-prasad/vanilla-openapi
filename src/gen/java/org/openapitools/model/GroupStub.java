@@ -23,6 +23,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * GroupStub
@@ -33,26 +34,29 @@ import javax.validation.Valid;
   GroupStub.JSON_PROPERTY_MEMBERS,
   GroupStub.JSON_PROPERTY_DISABLE
 })
+
+
+@javax.xml.bind.annotation.XmlRootElement
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2020-08-14T17:07:38.296-07:00[America/Los_Angeles]")
 public class GroupStub   {
-  public static final String JSON_PROPERTY_NAME = "name";
+  public static final String JSON_PROPERTY_NAME = "groupname";
   @JsonProperty(JSON_PROPERTY_NAME)
-  private String name;
+  private String groupname;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  public static final String JSON_PROPERTY_DESCRIPTION = "groupdescription";
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  private String description;
+  private String groupdescription;
 
   public static final String JSON_PROPERTY_MEMBERS = "members";
   @JsonProperty(JSON_PROPERTY_MEMBERS)
-  private List<String> members = null;
+  private List<String> groupmembers = null;
 
   public static final String JSON_PROPERTY_DISABLE = "disable";
   @JsonProperty(JSON_PROPERTY_DISABLE)
   private Boolean disable;
 
   public GroupStub name(String name) {
-    this.name = name;
+    this.groupname = name;
     return this;
   }
 
@@ -64,15 +68,15 @@ public class GroupStub   {
   @ApiModelProperty(value = "")
   
   public String getName() {
-    return name;
+    return groupname;
   }
 
   public void setName(String name) {
-    this.name = name;
+    this.groupname = name;
   }
 
   public GroupStub description(String description) {
-    this.description = description;
+    this.groupdescription = description;
     return this;
   }
 
@@ -84,23 +88,23 @@ public class GroupStub   {
   @ApiModelProperty(value = "")
   
   public String getDescription() {
-    return description;
+    return groupdescription;
   }
 
   public void setDescription(String description) {
-    this.description = description;
+    this.groupdescription = description;
   }
 
   public GroupStub members(List<String> members) {
-    this.members = members;
+    this.groupmembers = members;
     return this;
   }
 
   public GroupStub addMembersItem(String membersItem) {
-    if (this.members == null) {
-      this.members = new ArrayList<String>();
+    if (this.groupmembers == null) {
+      this.groupmembers = new ArrayList<String>();
     }
-    this.members.add(membersItem);
+    this.groupmembers.add(membersItem);
     return this;
   }
 
@@ -112,11 +116,11 @@ public class GroupStub   {
   @ApiModelProperty(value = "")
   
   public List<String> getMembers() {
-    return members;
+    return groupmembers;
   }
 
   public void setMembers(List<String> members) {
-    this.members = members;
+    this.groupmembers = members;
   }
 
   public GroupStub disable(Boolean disable) {
@@ -149,15 +153,15 @@ public class GroupStub   {
       return false;
     }
     GroupStub groupStub = (GroupStub) o;
-    return Objects.equals(this.name, groupStub.name) &&
-        Objects.equals(this.description, groupStub.description) &&
-        Objects.equals(this.members, groupStub.members) &&
+    return Objects.equals(this.groupname, groupStub.groupname) &&
+        Objects.equals(this.groupdescription, groupStub.groupdescription) &&
+        Objects.equals(this.groupmembers, groupStub.groupmembers) &&
         Objects.equals(this.disable, groupStub.disable);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, members, disable);
+    return Objects.hash(groupname, groupdescription, groupmembers, disable);
   }
 
 
@@ -166,9 +170,9 @@ public class GroupStub   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GroupStub {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    members: ").append(toIndentedString(members)).append("\n");
+    sb.append("    name: ").append(toIndentedString(groupname)).append("\n");
+    sb.append("    description: ").append(toIndentedString(groupdescription)).append("\n");
+    sb.append("    members: ").append(toIndentedString(groupmembers)).append("\n");
     sb.append("    disable: ").append(toIndentedString(disable)).append("\n");
     sb.append("}");
     return sb.toString();

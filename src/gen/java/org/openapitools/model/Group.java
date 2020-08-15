@@ -23,6 +23,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Group
@@ -33,6 +34,7 @@ import javax.validation.Valid;
   Group.JSON_PROPERTY_DESCRIPTION,
   Group.JSON_PROPERTY_MEMBERS
 })
+@javax.xml.bind.annotation.XmlRootElement
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2020-08-14T17:07:38.296-07:00[America/Los_Angeles]")
 public class Group   {
   public static final String JSON_PROPERTY_GID = "gid";
